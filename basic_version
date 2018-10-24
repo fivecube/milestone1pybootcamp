@@ -1,0 +1,46 @@
+def check(board,k):
+    if board[0][0]==k and board[1][1]==k and board[2][2]==k:
+        print(k,"wins")
+        return 1
+    if board[0][0] == k and board[0][1]==k and board[0][2]==k:
+        print(k, "wins")
+        return 1
+    if board[0][0] == k and board[1][0]==k and board[2][0]==k:
+        print(k, "wins")
+        return 1
+    if board[1][0] == k and board[1][1]==k and board[1][2]==k:
+        print(k, "wins")
+        return 1
+    if board[2][0] == k and board[2][1]==k and board[2][2]==k:
+        print(k, "wins")
+        return 1
+    if board[0][2] == k and board[1][1]==k and board[2][0]==k:
+        print(k, "wins")
+        return 1
+    if board[0][1] == k and board[1][1]==k and board[2][1]==k:
+        print(k, "wins")
+        return 1
+    if board[0][2] == k and board[1][2]==k and board[2][2]==k:
+        print(k, "wins")
+        return 1
+    else:
+        return 0
+def play():
+    board=[[0,0,0],[0,0,0],[0,0,0]] #basic_board
+    for i in range(9):
+        print((i%2)+1,"Person's Move")
+        a,b=input().split()
+        a,b=[int(a),int(b)]
+        mark(board,a,b,(i%2)+1)
+        if check(board,(i%2)+1):
+            break
+    else:
+        print("you love ties! don't you?")
+def mark(board,i,j,k):
+    board[i][j]=k
+    for i, j in [(0, 0), (0, 1), (0, 2), (1, 0), (1, 1), (1, 2), (2, 0), (2, 1), (2, 2)]:
+        print(board[i][j],end=" ")
+        if j==2:
+            print("\n")
+play()
+print("Run again to play again! or ask Mohit to add a while loop with a break condition!")
